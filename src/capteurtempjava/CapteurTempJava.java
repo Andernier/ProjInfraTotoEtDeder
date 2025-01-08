@@ -1,8 +1,8 @@
+package src.capteurtempjava;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package capteurtempjava;
 import java.util.*;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
