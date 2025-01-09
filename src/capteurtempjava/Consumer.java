@@ -27,7 +27,7 @@ public class Consumer {
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			String message = new String(delivery.getBody(), "UTF-8");
 			System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
-			Consumer.insererTemp(Double(message));
+			//Consumer.insererTemp(Double(message));
 		};
 
 		channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
