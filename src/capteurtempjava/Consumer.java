@@ -27,13 +27,13 @@ public class Consumer {
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			String message = new String(delivery.getBody(), "UTF-8");
 			System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
-			this.insérerTemp(Double(message));
+			Consumer.insererTemp(Double(message));
 		};
 
 		channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
 		});
 	}
-    
+    /* 
     public static Connection getConnexion() throws Exception { 
         if (singleton == null){ 
             Class.forName(driver); 
@@ -42,7 +42,7 @@ public class Consumer {
         return (singleton); 
     }
 
-	public void insérerTemp(int temperature) throws Exception{
+	public static void insererTemp(Double temperature) throws Exception{
         String sql;
         Statement objRequete;
         objRequete = Consumer.getConnexion().createStatement();
@@ -54,5 +54,5 @@ public class Consumer {
         singleton.close();
         singleton = null;
     }
-
+*/
 }
