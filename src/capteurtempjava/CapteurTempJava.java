@@ -38,6 +38,7 @@
  
                  channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, message.getBytes("UTF-8"));
                  System.out.println(" [x] Sent '" + message + "'");
+                 Thread.sleep(500);
              }
          }
      }
