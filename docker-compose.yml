@@ -13,6 +13,7 @@ services:
       - broker_host=rabbitmq
     depends_on:
       - rabbitmq       # Assure que RabbitMQ est en cours d'exécution
+    command: java src.capteurtempjava.CapteurTempJava
 
   consumer:
     build: .           # Utilise le même Dockerfile
@@ -20,4 +21,4 @@ services:
       - broker_host=rabbitmq
     depends_on:
       - rabbitmq       # Assure que RabbitMQ est en cours d'exécution
-    command: java capteurtempjava.Consumer # Lance le consommateur
+    command: java src.capteurtempjava.Consumer # Lance le consommateur

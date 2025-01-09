@@ -1,14 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    
-    <groupId>RabbitMQ-PubSub</groupId>
-    <artifactId>RabbitMQ-PubSub</artifactId>
-    <version>0.0.1</version>
-
-    <build>
-        <sourceDirectory>src/capteurtempjava</sourceDirectory> <!-- correction ici -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>RabbitMQ-PubSub</groupId>
+  <artifactId>RabbitMQ-PubSub</artifactId>
+  <version>0.0.1</version>
+ <build>
+        <sourceDirectory>src</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -22,18 +18,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.3.0</version>
                 <configuration>
                     <outputDirectory>app</outputDirectory>
                     <finalName>app</finalName>
-                    <archive>
-                        <manifest>
-                            <mainClass>capteurtempjava.CapteurTempJava</mainClass> <!-- correction ici -->
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
                 </configuration>
                 <executions>
                     <execution>
@@ -41,12 +28,23 @@
                         <goals>
                             <goal>single</goal>
                         </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        Producer
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-    
     <dependencies>
         <dependency>
             <groupId>com.rabbitmq</groupId>
@@ -54,4 +52,5 @@
             <version>5.18.0</version>
         </dependency>
     </dependencies>
+
 </project>
