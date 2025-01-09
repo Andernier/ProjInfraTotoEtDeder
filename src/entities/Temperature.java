@@ -1,6 +1,8 @@
+import java.sql.Timestamp;
+
 public class Temperature {
     private Double valeur;
-    private timestamp date;
+    private Timestamp date;
 
 public Temperature(Double valeur){
     this.valeur = valeur;
@@ -15,11 +17,11 @@ public Temperature(Double valeur){
         this.valeur = valeur;
     }
 
-    public DateFormat getDate(){
+    public Timestamp getDate(){
         return date;
     }
 
-    public void setDate(DateFormat date){
+    public void setDate(Timestamp date){
         this.date = date;
     }
 }

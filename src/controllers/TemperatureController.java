@@ -1,4 +1,3 @@
-import src.entities.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +27,8 @@ public class TemperatureController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Temperature>> getAllTemperature() {
-        return temperatures;
+        public ResponseEntity<List<Temperature>> getAllTemperature() {
+        return ResponseEntity.ok(temperatures);
     }
 
     // Méthode pour obtenir la connexion MySQL
