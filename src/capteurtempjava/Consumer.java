@@ -27,6 +27,7 @@ public class Consumer {
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			String message = new String(delivery.getBody(), "UTF-8");
 			System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
+			self.insérerTemp(delivery);
 		};
 
 		channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
@@ -41,11 +42,11 @@ public class Consumer {
         return (singleton); 
     }
 
-	public void insérerTemp() throws Exception{
+	public void insérerTemp(int temperature) throws Exception{
         String sql;
         Statement objRequete;
-        objRequete = GestionConnexion.getConnexion().createStatement();
-        sql = "INSERT INTO `Temperature`(temperature, date) VALUES ("+this.temperature+",'"+this.date+"')";
+        objRequete = self.getConnexion().createStatement();
+        sql = "INSERT INTO `Temperature`(temperature) VALUES ("+temperature+")";
         objRequete.executeUpdate(sql);
     }
     
