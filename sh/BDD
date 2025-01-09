@@ -19,3 +19,10 @@ docker run -d --rm -it \
     -p 3306:3306 \
     --net $NETWORK_NAME \
     mysql:8.0
+
+docker run -d --rm -it \
+    --name $CURRENT_DIR-phpmyadmin \
+    -p 8080:80 \
+    --link $CURRENT_DIR-mysql:db \
+    --net $NETWORK_NAME \
+    phpmyadmin/phpmyadmin
