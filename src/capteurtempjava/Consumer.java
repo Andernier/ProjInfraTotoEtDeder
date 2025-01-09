@@ -11,7 +11,7 @@ public class Consumer {
     private static final String BROKER_HOST = System.getenv("broker_host");
 
     // Connexion MySQL
-    private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/dbcapteurs";
+    private static final String MYSQL_URL = "jdbc:mysql://ProjInfraTotoEtDeder-mysql:3306/dbcapteurs";
     private static final String MYSQL_USER = "root";
     private static final String MYSQL_PASSWORD = "rootpassword";
 
