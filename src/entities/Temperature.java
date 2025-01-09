@@ -1,12 +1,10 @@
-import java.text.DateFormat;
-
 public class Temperature {
     private Double valeur;
-    private DateFormat date;
+    private timestamp date;
 
 public Temperature(Double valeur){
     this.valeur = valeur;
-    this.date = new Date();
+    this.date = new Timestamp(System.currentTimeMillis());
 }
 
     public Double getValeur(){
