@@ -31,16 +31,20 @@ public class Consumer {
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
-            try {
-                // Convertir le message en double et l'insérer dans la base de données
-                double temperature = Double.parseDouble(message);
-                insererTemp(temperature);
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid temperature value: " + message);
-            }
-        };
+			String message = new String(delivery.getBody(), "UTF-8");
+			System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
+			
+			try {
+				// Convertir le message en double et insérer dans la base de données
+				double temperature = Double.parseDouble(message);
+				insererTemp(temperature);
+			} catch (NumberFormatException e) {
+				System.err.println("Invalid temperature value: " + message);
+			} catch (Exception e) {
+				System.err.println("Error inserting temperature: " + e.getMessage());
+			}
+		};
+		
 
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {});
     }
