@@ -2,6 +2,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import entities.Temperature;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -22,7 +24,7 @@ public class TemperatureController {
     private List<Temperature> temperatures = new ArrayList<>();
     private AtomicLong idCounter = new AtomicLong();
 
-    public TemperatureController(){
+    public TemperatureController() throws Exception{
         this.temperatures = TemperatureController.getTemp();
     }
 
