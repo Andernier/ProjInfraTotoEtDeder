@@ -12,9 +12,13 @@ public class Consumer {
 	private static final String driver = "org.gjt.mm.mysql.Driver";
     private static Connection singleton = null;
 
+    // Connexion MySQL
 	private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/dbcapteurs";
     private static final String MYSQL_USER = "root";
     private static final String MYSQL_PASSWORD = "rootpassword";
+
+    // MySQL Connection singleton
+    private static Connection mysqlConnection = null;
 
 	public static void main(String[] argv) throws Exception {
 		ConnectionFactory factory = new ConnectionFactory();
