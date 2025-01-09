@@ -34,11 +34,11 @@ public class Consumer {
 		channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
 		});
 	}
-    /* 
+    
     public static Connection getConnexion() throws Exception { 
         if (singleton == null){ 
             Class.forName(driver); 
-            singleton =DriverManager.getConnection("jdbc:mysql:./DBcapteurs","root","root");
+            singleton =DriverManager.getConnection("jdbc:mysql:./var/run/mysqld/dbcapteurs","root","rootpassword");
         }
         return (singleton); 
     }
@@ -55,5 +55,5 @@ public class Consumer {
         singleton.close();
         singleton = null;
     }
-*/
+
 }
