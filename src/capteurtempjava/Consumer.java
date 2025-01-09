@@ -1,4 +1,3 @@
-import java.sql.DriverManager;
 import java.sql.*;
 
 import com.rabbitmq.client.Channel;
@@ -13,11 +12,15 @@ public class Consumer {
 	private static final String driver = "org.gjt.mm.mysql.Driver";
     private static Connection singleton = null;
 
+	private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/dbcapteurs";
+    private static final String MYSQL_USER = "root";
+    private static final String MYSQL_PASSWORD = "rootpassword";
+
 	public static void main(String[] argv) throws Exception {
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost(BROKER_HOST);
-		Connection connection = factory.newConnection();
-		Channel channel = connection.createChannel();
+		com.rabbitmq.client.Connection rabbitConnection = factory.newConnection();
+		Channel channel = rabbitConnection.createChannel();
 
 		channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
 		String queueName = channel.queueDeclare().getQueue();
@@ -35,12 +38,12 @@ public class Consumer {
 		});
 	}
     
-    public static Connection getConnexion() throws Exception { 
-        if (singleton == null){ 
-            Class.forName(driver); 
-            singleton =DriverManager.getConnection("jdbc:mysql:./var/run/mysqld/dbcapteurs","root","rootpassword");
+    public static Connection getConnexion() throws Exception {
+        if (mysqlConnection == null) {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            mysqlConnection = DriverManager.getConnection(MYSQL_URL, MYSQL_USER, MYSQL_PASSWORD);
         }
-        return (singleton); 
+        return mysqlConnection;
     }
 
 	public static void insererTemp(Double temperature) throws Exception{
