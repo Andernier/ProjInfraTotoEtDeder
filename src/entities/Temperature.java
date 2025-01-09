@@ -4,6 +4,11 @@ public class Temperature {
     private Double valeur;
     private DateFormat date;
 
+public Temperature(Double valeur){
+    this.valeur = valeur;
+    this.date = new Date();
+}
+
     public Double getValeur(){
         return valeur;
     }
