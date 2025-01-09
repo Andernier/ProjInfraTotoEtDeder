@@ -1,7 +1,3 @@
-package com.example.restapi.controllers;
-import com.example.restapi.entities.Personne;
-import entities.Temperature;
-
 import entities.Temperature;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
