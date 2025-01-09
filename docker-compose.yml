@@ -7,9 +7,17 @@ services:
       - "15672:15672"  # Port pour l'interface de gestion
       - "5672:5672"    # Port par défaut de RabbitMQ
 
-  app:
-    build: .           # Construit à partir du Dockerfile dans ce dossier
-    depends_on:
-      - rabbitmq       # Assure que RabbitMQ est démarré avant d'exécuter l'application
+  producer:
+    build: .           # Utilise le Dockerfile pour construire l'application
     environment:
-      - broker_host=rabbitmq  # Définit l'hôte pour RabbitMQ
+      - broker_host=rabbitmq
+    depends_on:
+      - rabbitmq       # Assure que RabbitMQ est en cours d'exécution
+
+  consumer:
+    build: .           # Utilise le même Dockerfile
+    environment:
+      - broker_host=rabbitmq
+    depends_on:
+      - rabbitmq       # Assure que RabbitMQ est en cours d'exécution
+    command: java capteurtempjava.Consumer # Lance le consommateur
